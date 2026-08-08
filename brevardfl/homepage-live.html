@@ -100,6 +100,24 @@
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 5px; font-size: 1rem; }
         .form-group textarea { resize: vertical; min-height: 100px; }
         .required { color: #e53e3e; }
+
+        /* Testimonials */
+        .testimonials { padding: 60px 0; background: white; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .testimonial-card { background: #f7fafc; border-left: 4px solid #fbbf24; padding: 25px; border-radius: 0 8px 8px 0; }
+        .testimonial-card p { font-style: italic; color: #4a5568; margin-bottom: 15px; font-size: 1.05rem; }
+        .testimonial-card .author { font-weight: bold; color: #1a365d; }
+
+        /* Exit Intent Popup */
+        .exit-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center; }
+        .exit-overlay.active { display: flex; }
+        .exit-modal { background: white; padding: 40px; border-radius: 10px; max-width: 450px; width: 90%; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .exit-modal h3 { color: #1a365d; margin-bottom: 20px; font-size: 1.5rem; text-align: center; }
+        .exit-modal .form-group { margin-bottom: 15px; }
+        .exit-modal .form-group label { display: block; margin-bottom: 4px; font-weight: 600; color: #1a365d; font-size: 0.9rem; }
+        .exit-modal .form-group input { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 5px; font-size: 1rem; }
+        .exit-modal .btn { width: 100%; border: none; cursor: pointer; }
+        .exit-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #666; cursor: pointer; background: none; border: none; }
         
         /* Footer */
         footer { background: #1a365d; color: white; padding: 40px 0; text-align: center; }
@@ -281,6 +299,27 @@
         </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Brevard County Homeowners Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"They stopped my foreclosure with 8 days to spare. Closed in 9 days."</p>
+                    <div class="author">Denise F.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Inherited my mom's house in Palm Bay. They handled everything."</p>
+                    <div class="author">Robert T.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Fair offer, no pressure. Easiest sale I've ever done."</p>
+                    <div class="author">Maria L.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Form -->
     <section class="contact">
         <div class="container">
@@ -324,5 +363,39 @@
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">This is not legal advice. For foreclosure or probate matters, consult a qualified attorney.</p>
         </div>
     </footer>
+    <!-- Exit Intent Popup -->
+    <div class="exit-overlay" id="exitPopup">
+        <div class="exit-modal">
+            <button class="exit-close" onclick="document.getElementById('exitPopup').classList.remove('active')">&times;</button>
+            <h3>Wait! Get Your No-Obligation Cash Offer</h3>
+            <form action="https://api.leadconnectorhq.com/widget/form/EttaPdgy4kFoZOjpStAy" method="POST">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="full_name" required placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required placeholder="(321) 555-1234">
+                </div>
+                <button type="submit" class="btn">Get My Offer</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        (function() {
+            var shown = false;
+            document.addEventListener('mouseout', function(e) {
+                if (!shown && e.clientY < 10) {
+                    shown = true;
+                    document.getElementById('exitPopup').classList.add('active');
+                }
+            });
+            document.getElementById('exitPopup').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
