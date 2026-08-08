@@ -1,5 +1,5 @@
 #!/bin/bash
-# One-command deploy: Git push + FTP upload
+# One-command deploy: Git push + FTP upload via curl
 # Usage: ./deploy.sh brevardfl   or   ./deploy.sh cocoa
 
 SITE=$1
@@ -12,32 +12,28 @@ fi
 echo "=== Git: committing all changes ==="
 cd "$(dirname "$0")"
 git add .
-git commit -m "Deploy $SITE - $(date '+%Y-%m-%d %H:%M')"
+git commit -m "Deploy $SITE - $(date '+%Y-%m-%d %H:%M')" || echo "No changes to commit"
 git push origin main
 echo "✅ GitHub updated"
 
 echo "=== FTP: uploading $SITE ==="
-# Credentials filled in below
 if [ "$SITE" == "brevardfl" ]; then
-    FTP_HOST="YOUR_BREVARDFL_HOST"
-    FTP_USER="YOUR_BREVARDFL_USER"
-    FTP_PASS="YOUR_BREVARDFL_PASS"
-    FTP_REMOTE_DIR="/"
+    FTP_USER="mb-editor@goldenticketrealty.com"
+    FTP_PASS='-Rcdl86NPj_gH(m6'
     LOCAL_DIR="./brevardfl"
 else
-    FTP_HOST="YOUR_COCOA_HOST"
-    FTP_USER="YOUR_COCOA_USER"
-    FTP_PASS="YOUR_COCOA_PASS"
-    FTP_REMOTE_DIR="/"
+    FTP_USER="cocoafast@sellmyhousefastcocoa.com"
+    FTP_PASS='FbnyZ%9t+AG7L}SX'
     LOCAL_DIR="./cocoa"
 fi
 
-# Upload via lftp (mirrors local folder to remote)
-lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<EOF
-set ssl:verify-certificate no
-set ftp:ssl-allow no
-mirror -R --delete --verbose "$LOCAL_DIR" "$FTP_REMOTE_DIR"
-bye
-EOF
+FTP_HOST="ftp://162.0.232.161"
+
+# Upload all files in the site folder
+for f in "$LOCAL_DIR"/*; do
+    [ -f "$f" ] || continue
+    fname=$(basename "$f")
+    curl -k --ftp-ssl-control -T "$f" "$FTP_HOST/$fname" --user "$FTP_USER:$FTP_PASS" 2>/dev/null && echo "  ✅ $fname" || echo "  ❌ $fname"
+done
 
 echo "✅ $SITE deployed live"
