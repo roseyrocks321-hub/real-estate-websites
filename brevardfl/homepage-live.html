@@ -13,10 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stop Foreclosure & Sell Inherited Property | Brevard County</title>
     <meta name="description" content="Cash offers in 24 hours for foreclosure, probate, and inherited properties in Brevard County. Close in 10 days or less. No repairs, no fees.">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link rel="icon" type="image/png" href="/favicon.png?v=2" sizes="48x48">
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="48x48">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
@@ -30,38 +27,20 @@
         .nav-menu { display: flex; gap: 20px; }
         .nav-menu a { color: white; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
         .nav-menu a:hover { color: #fbbf24; }
-        .phone { font-size: 1.1rem; display: flex; align-items: center; gap: 15px; }
+        .phone { font-size: 1.1rem; }
         .phone a { color: #fbbf24; text-decoration: none; }
-        .header-cta { display: inline-block; background: #fbbf24; color: #1a365d !important; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 0.95rem; transition: transform 0.2s; white-space: nowrap; }
-        .header-cta:hover { transform: translateY(-2px); background: #f59e0b; }
         @media (max-width: 768px) {
             .header-content { flex-direction: column; gap: 10px; }
             .nav-menu { flex-wrap: wrap; justify-content: center; gap: 15px; }
         }
         
         /* Hero */
-        .hero { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 80px 0; }
-        .hero-inner { display: flex; align-items: center; gap: 50px; }
-        .hero-text { flex: 1; }
-        .hero-text h1 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero-text p { font-size: 1.3rem; margin-bottom: 30px; opacity: 0.9; }
-        .hero-form { flex: 0 0 380px; background: white; color: #333; padding: 30px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .hero-form h3 { color: #1a365d; margin-bottom: 20px; font-size: 1.3rem; text-align: center; }
-        .hero-form .form-group { margin-bottom: 15px; }
-        .hero-form .form-group label { display: block; margin-bottom: 4px; font-weight: 600; color: #1a365d; font-size: 0.9rem; }
-        .hero-form .form-group input, .hero-form .form-group select { width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 5px; font-size: 0.95rem; }
-        .hero-form .btn { width: 100%; text-align: center; border: none; cursor: pointer; }
+        .hero { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 80px 0; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; opacity: 0.9; }
         .btn { display: inline-block; background: #fbbf24; color: #1a365d; padding: 15px 40px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1.1rem; transition: transform 0.2s; }
         .btn:hover { transform: translateY(-2px); }
         .btn-secondary { background: transparent; border: 2px solid white; color: white; margin-left: 15px; }
-        @media (max-width: 768px) {
-            .hero-inner { flex-direction: column; }
-            .hero-form { flex: 1; width: 100%; }
-            .hero-text h1 { font-size: 2rem; }
-            .hero-text p { font-size: 1.1rem; }
-            .btn { display: block; margin: 10px auto; }
-            .btn-secondary { margin-left: auto; }
-        }
         
         /* Trust Bar */
         .trust-bar { background: #f7fafc; padding: 30px 0; text-align: center; }
@@ -103,24 +82,6 @@
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 5px; font-size: 1rem; }
         .form-group textarea { resize: vertical; min-height: 100px; }
         .required { color: #e53e3e; }
-
-        /* Testimonials */
-        .testimonials { padding: 60px 0; background: white; }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .testimonial-card { background: #f7fafc; border-left: 4px solid #fbbf24; padding: 25px; border-radius: 0 8px 8px 0; }
-        .testimonial-card p { font-style: italic; color: #4a5568; margin-bottom: 15px; font-size: 1.05rem; }
-        .testimonial-card .author { font-weight: bold; color: #1a365d; }
-
-        /* Exit Intent Popup */
-        .exit-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center; }
-        .exit-overlay.active { display: flex; }
-        .exit-modal { background: white; padding: 40px; border-radius: 10px; max-width: 450px; width: 90%; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .exit-modal h3 { color: #1a365d; margin-bottom: 20px; font-size: 1.5rem; text-align: center; }
-        .exit-modal .form-group { margin-bottom: 15px; }
-        .exit-modal .form-group label { display: block; margin-bottom: 4px; font-weight: 600; color: #1a365d; font-size: 0.9rem; }
-        .exit-modal .form-group input { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 5px; font-size: 1rem; }
-        .exit-modal .btn { width: 100%; border: none; cursor: pointer; }
-        .exit-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #666; cursor: pointer; background: none; border: none; }
         
         /* Footer */
         footer { background: #1a365d; color: white; padding: 40px 0; text-align: center; }
@@ -148,47 +109,17 @@
                 <a href="/faq">FAQ</a>
                 <a href="/blog/">Blog</a>
             </nav>
-            <div class="phone">Call/Text: <a href="tel:321-450-7457">321-450-7457</a> <a href="#contact" class="header-cta">Get Cash Offer</a></div>
+            <div class="phone">Call/Text: <a href="tel:321-342-2514">321-342-2514</a></div>
         </div>
     </header>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="container hero-inner">
-            <div class="hero-text">
-                <h1>Stop Foreclosure & Settle Estates Fast in Brevard County</h1>
-                <p>Cash offers in 24 hours. Close in 10 days or less. No repairs, no fees, no stress — even if you're facing foreclosure or dealing with a loved one's estate.</p>
-                <a href="#contact" class="btn">Get Your Cash Offer Now</a>
-                <a href="tel:321-450-7457" class="btn btn-secondary">Call 321-450-7457</a>
-            </div>
-            <div class="hero-form">
-                <h3>Get Your Cash Offer</h3>
-                <form action="https://api.leadconnectorhq.com/widget/form/EttaPdgy4kFoZOjpStAy" method="POST">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="full_name" required placeholder="John Smith">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input type="tel" name="phone" required placeholder="(321) 555-1234">
-                    </div>
-                    <div class="form-group">
-                        <label>Property Address</label>
-                        <input type="text" name="address" required placeholder="123 Main St, Melbourne, FL">
-                    </div>
-                    <div class="form-group">
-                        <label>Situation</label>
-                        <select name="situation" required>
-                            <option value="">Select...</option>
-                            <option value="foreclosure">Facing Foreclosure</option>
-                            <option value="probate">Probate/Estate</option>
-                            <option value="inherited">Inherited Property</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn">Get My Cash Offer</button>
-                </form>
-            </div>
+        <div class="container">
+            <h1>Stop Foreclosure & Settle Estates Fast in Brevard County</h1>
+            <p>Cash offers in 24 hours. Close in 10 days or less. No repairs, no fees, no stress — even if you're facing foreclosure or dealing with a loved one's estate.</p>
+            <a href="#contact" class="btn">Get Your Cash Offer Now</a>
+            <a href="tel:321-342-2514" class="btn btn-secondary">Call 321-342-2514</a>
         </div>
     </section>
 
@@ -297,29 +228,7 @@
         <div class="container">
             <h2>Get Your No-Obligation Cash Offer Today</h2>
             <p>Foreclosure looming? Dealing with probate? Inherited a house you don't want? Let's talk.</p>
-            <p style="font-weight: bold; margin-bottom: 30px; opacity: 1;">We buy 5-7 houses per month in Brevard County. Spots fill fast.</p>
-            <a href="tel:321-450-7457" class="btn">Call 321-450-7457</a>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Brevard County Homeowners Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"They stopped my foreclosure with 8 days to spare. Closed in 9 days."</p>
-                    <div class="author">Denise F.</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Inherited my mom's house in Palm Bay. They handled everything."</p>
-                    <div class="author">Robert T.</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Fair offer, no pressure. Easiest sale I've ever done."</p>
-                    <div class="author">Maria L.</div>
-                </div>
-            </div>
+            <a href="tel:321-342-2514" class="btn">Call 321-342-2514</a>
         </div>
     </section>
 
@@ -329,6 +238,7 @@
             <div class="form-container">
                 <h2 style="text-align: center; margin-bottom: 30px; color: #1a365d;">Get Your Cash Offer</h2>
                 <form action="https://api.leadconnectorhq.com/widget/form/EttaPdgy4kFoZOjpStAy" method="POST">
+                    <input type="hidden" name="lead_source" value="brevard">
                     <div class="form-group">
                         <label>Full Name <span class="required">*</span></label>
                         <input type="text" name="full_name" required placeholder="John Smith">
@@ -336,6 +246,10 @@
                     <div class="form-group">
                         <label>Phone Number <span class="required">*</span></label>
                         <input type="tel" name="phone" required placeholder="(321) 555-1234">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="john@email.com">
                     </div>
                     <div class="form-group">
                         <label>Property Address <span class="required">*</span></label>
@@ -350,6 +264,19 @@
                             <option value="inherited">Inherited Property</option>
                             <option value="other">Other</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Best Time to Call</label>
+                        <select name="best_time">
+                            <option value="">Select...</option>
+                            <option value="morning">Morning (8am-12pm)</option>
+                            <option value="afternoon">Afternoon (12pm-5pm)</option>
+                            <option value="evening">Evening (5pm-6pm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Tell us more about your situation..."></textarea>
                     </div>
                     <button type="submit" class="btn" style="width: 100%;">Get My Cash Offer</button>
                     <p style="text-align: center; margin-top: 20px; color: #666; font-size: 0.9rem;">🔒 Your information is confidential and will never be shared.</p>
@@ -366,39 +293,5 @@
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">This is not legal advice. For foreclosure or probate matters, consult a qualified attorney.</p>
         </div>
     </footer>
-    <!-- Exit Intent Popup -->
-    <div class="exit-overlay" id="exitPopup">
-        <div class="exit-modal">
-            <button class="exit-close" onclick="document.getElementById('exitPopup').classList.remove('active')">&times;</button>
-            <h3>Wait! Get Your No-Obligation Cash Offer</h3>
-            <form action="https://api.leadconnectorhq.com/widget/form/EttaPdgy4kFoZOjpStAy" method="POST">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="full_name" required placeholder="John Smith">
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" name="phone" required placeholder="(321) 555-1234">
-                </div>
-                <button type="submit" class="btn">Get My Offer</button>
-            </form>
-        </div>
-    </div>
-    <script>
-        (function() {
-            var shown = false;
-            document.addEventListener('mouseout', function(e) {
-                if (!shown && e.clientY < 10) {
-                    shown = true;
-                    document.getElementById('exitPopup').classList.add('active');
-                }
-            });
-            document.getElementById('exitPopup').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.remove('active');
-                }
-            });
-        })();
-    </script>
 </body>
 </html>
