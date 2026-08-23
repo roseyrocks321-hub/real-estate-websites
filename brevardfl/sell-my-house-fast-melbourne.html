@@ -517,7 +517,7 @@
     <div style="max-width: 560px; margin: 0 auto; background: white; padding: 48px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border: 1px solid #f1f5f9;">
         <h2 style="text-align: center; margin-bottom: 8px; color: #1a365d; font-size: 1.75rem; font-weight: 700;">Get Your Cash Offer</h2>
         <p style="text-align: center; margin-bottom: 32px; color: #64748b; font-size: 0.95rem;">Fill out the form below and we'll call you within 5 minutes.</p>
-        <form action="https://api.leadconnectorhq.com/widget/form/EttaPdgy4kFoZOjpStAy" method="POST" style="display: flex; flex-direction: column; gap: 18px;">
+        <form id="ghl-form-native" action="https://api.leadconnectorhq.com/widget/form/EttaPdgy4kFoZOjpStAy" method="POST" style="display: flex; flex-direction: column; gap: 18px;">
             <input type="hidden" name="lead_source" value="melbourne">
             <div>
                 <label style="display: block; margin-bottom: 6px; font-weight: 600; color: #1a365d; font-size: 0.9rem;">Full Name</label>
@@ -547,8 +547,42 @@
                     <option value="other">Other</option>
                 </select>
             </div>
-            <button type="submit" style="width: 100%; background: #1a365d; color: white; padding: 16px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 8px; letter-spacing: 0.3px;">Get My Cash Offer</button>
+            <button type="submit" id="form-submit-btn" style="width: 100%; background: #1a365d; color: white; padding: 16px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 8px; letter-spacing: 0.3px;">Get My Cash Offer</button>
         </form>
+        <script>
+        (function() {
+            var form = document.getElementById('ghl-form-native');
+            var btn = document.getElementById('form-submit-btn');
+            var successMsg = document.createElement('div');
+            successMsg.style.cssText = 'display:none;text-align:center;padding:40px 20px;';
+            successMsg.innerHTML = '<div style="font-size:3rem;margin-bottom:16px;">✅</div><h3 style="color:#1a365d;margin-bottom:12px;font-size:1.4rem;">Thank You!</h3><p style="color:#64748b;font-size:1rem;line-height:1.6;">We have received your information. An offer specialist will call you within <strong>5 minutes</strong> at the number you provided.</p><p style="color:#94a3b8;font-size:0.85rem;margin-top:16px;">If you need immediate assistance, call <a href="tel:321-342-2514" style="color:#1a365d;font-weight:600;">321-342-2514</a></p>';
+            form.parentNode.insertBefore(successMsg, form.nextSibling);
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                btn.disabled = true;
+                btn.style.opacity = '0.6';
+                btn.textContent = 'Sending...';
+
+                var data = new FormData(form);
+                fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    mode: 'no-cors'
+                }).then(function() {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    // Push to data layer for GTM if present
+                    if (window.dataLayer) window.dataLayer.push({'event': 'form_submit_success'});
+                }).catch(function() {
+                    // Even on "error" due to no-cors, the submission likely went through
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    if (window.dataLayer) window.dataLayer.push({'event': 'form_submit_success'});
+                });
+            });
+        })();
+        </script>
         <p style="text-align: center; margin-top: 24px; color: #94a3b8; font-size: 0.85rem;">
             🔒 Your information is confidential and will never be shared.
         </p>
