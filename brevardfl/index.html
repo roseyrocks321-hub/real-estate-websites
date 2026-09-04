@@ -95,6 +95,36 @@
             .btn-secondary { margin-left: auto; }
         }
     </style>
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Brevard Cash Buyers",
+  "url": "https://sellmyhousefastbrevardfl.com",
+  "telephone": "+1-321-342-2514",
+  "aggregateRating": {{
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "6",
+    "bestRating": "5",
+    "worstRating": "1"
+  }},
+  "review": [
+    {{
+      "@type": "Review",
+      "author": {{ "@type": "Person", "name": "Kathy B." }},
+      "reviewBody": "Martin and his team were great to work with. He kept me informed during the entire process and promptly answered any questions.",
+      "reviewRating": {{ "@type": "Rating", "ratingValue": "5", "bestRating": "5" }}
+    }},
+    {{
+      "@type": "Review",
+      "author": {{ "@type": "Person", "name": "Collin C." }},
+      "reviewBody": "They were very honest and transparent through the whole process and made selling my house easy. I highly recommend!",
+      "reviewRating": {{ "@type": "Rating", "ratingValue": "5", "bestRating": "5" }}
+    }}
+  ]
+}}
+</script>
 </head>
 <body>
     <!-- Header -->
@@ -224,11 +254,40 @@
         </div>
     </section>
 
+
+    <!-- Testimonials -->
+    <section style="padding:80px 0;background:#f7fafc;">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom:40px;">Trusted by Brevard County Homeowners</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;">
+                <div style="background:white;border:1px solid #e2e8f0;border-radius:10px;padding:30px;box-shadow:0 4px 6px rgba(0,0,0,0.05);">
+                    <div style="font-size:1.2rem;color:#fbbf24;margin-bottom:15px;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style:italic;color:#4a5568;margin-bottom:20px;">"Martin and his team were great to work with. He kept me informed during the entire process and promptly answered any questions."</p>
+                    <div style="font-weight:600;color:#1a365d;">Kathy B.</div>
+                </div>
+                <div style="background:white;border:1px solid #e2e8f0;border-radius:10px;padding:30px;box-shadow:0 4px 6px rgba(0,0,0,0.05);">
+                    <div style="font-size:1.2rem;color:#fbbf24;margin-bottom:15px;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style:italic;color:#4a5568;margin-bottom:20px;">"They were very honest and transparent through the whole process and made selling my house easy. I highly recommend!"</p>
+                    <div style="font-weight:600;color:#1a365d;">Collin C.</div>
+                </div>
+                <div style="background:white;border:1px solid #e2e8f0;border-radius:10px;padding:30px;box-shadow:0 4px 6px rgba(0,0,0,0.05);">
+                    <div style="font-size:1.2rem;color:#fbbf24;margin-bottom:15px;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-style:italic;color:#4a5568;margin-bottom:20px;">"Martin was a pleasure to work with! He had a quick solution for our house we had been trying to sell for such a long time."</p>
+                    <div style="font-weight:600;color:#1a365d;">Dominic F.</div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:30px;">
+                <a href="/testimonials" style="color:#2c5282;text-decoration:none;font-weight:600;">Read all 6 reviews →</a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="container">
             <h2>Get Your No-Obligation Cash Offer Today</h2>
             <p>Foreclosure looming? Dealing with probate? Inherited a house you don't want? Let's talk.</p>
+            <p style="font-weight:600;margin-top:15px;font-size:1.1rem;">🔥 We buy 5-7 houses per month in Brevard County. Spots fill fast — call today.</p>
             <a href="tel:321-342-2514" class="btn">Call 321-342-2514</a>
         </div>
     </section>
@@ -272,5 +331,31 @@
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">This is not legal advice. For foreclosure or probate matters, consult a qualified attorney.</p>
         </div>
     </footer>
+
+<!-- Exit Intent Modal -->
+<div id="exitModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;justify-content:center;align-items:center;">
+  <div style="background:white;padding:40px;border-radius:10px;max-width:500px;width:90%;text-align:center;position:relative;">
+    <span onclick="document.getElementById('exitModal').style.display='none'" style="position:absolute;top:10px;right:15px;font-size:28px;cursor:pointer;color:#666;">&times;</span>
+    <h3 style="color:#1a365d;margin-bottom:15px;font-size:1.5rem;">Wait! Get Your No-Obligation Cash Offer</h3>
+    <p style="margin-bottom:20px;color:#4a5568;">Before you go — get a fair cash offer on your Brevard County home in 24 hours. No repairs, no fees.</p>
+    <a href="tel:321-342-2514" style="display:inline-block;background:#fbbf24;color:#1a365d;padding:15px 40px;text-decoration:none;border-radius:5px;font-weight:bold;font-size:1.1rem;">Call 321-342-2514</a>
+    <p style="margin-top:15px;font-size:0.9rem;"><a href="#contact" onclick="document.getElementById('exitModal').style.display='none'" style="color:#2c5282;">Or fill out the form below →</a></p>
+  </div>
+</div>
+<script>
+(function(){
+  var shown = false;
+  document.addEventListener('mouseout', function(e){
+    if(!shown && e.clientY < 10 && !e.relatedTarget){
+      shown = true;
+      document.getElementById('exitModal').style.display='flex';
+    }
+  });
+  document.getElementById('exitModal').addEventListener('click', function(e){
+    if(e.target === this) this.style.display='none';
+  });
+})();
+</script>
+
 </body>
 </html>
