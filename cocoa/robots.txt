@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /test-ctrl.html
+
+Sitemap: https://sellmyhousefastcocoa.com/sitemap.xml

@@ -1,0 +1,30 @@
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://assets.leadconnectorhq.com https://api.leadconnectorhq.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-src https://api.leadconnectorhq.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://api.leadconnectorhq.com;"
+    <FilesMatch "\.(png|jpg|jpeg|gif|ico|svg|webp|pdf|css|js)$">
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set Referrer-Policy "strict-origin-when-cross-origin"
+        Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    </FilesMatch>
+</IfModule>
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache control for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
