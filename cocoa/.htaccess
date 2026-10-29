@@ -1,4 +1,30 @@
-# Security Headers
+# Block spam/hack URL patterns (return 410 Gone)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Block e-commerce spam parameters
+    RewriteCond %{QUERY_STRING} ^shops? [NC,OR]
+    RewriteCond %{QUERY_STRING} ^page=shops [NC,OR]
+    RewriteCond %{QUERY_STRING} ^products? [NC,OR]
+    RewriteCond %{QUERY_STRING} ^item [NC,OR]
+    RewriteCond %{QUERY_STRING} ^product_ [NC,OR]
+    RewriteCond %{QUERY_STRING} ^category [NC,OR]
+    RewriteCond %{QUERY_STRING} ^id= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^p=[0-9] [NC,OR]
+    RewriteCond %{QUERY_STRING} ^type= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^tag= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^author= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^feed= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^s= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^sort= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^order= [NC,OR]
+    RewriteCond %{QUERY_STRING} ^view= [NC]
+    RewriteRule .* - [G,L]
+    
+    # Block wp-content/uploads spam paths
+    RewriteCond %{REQUEST_URI} ^/wp-content/uploads/.*\.php$ [NC,OR]
+    RewriteCond %{REQUEST_URI} ^/\.well-known/.*\.php$ [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
 <IfModule mod_headers.c>
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set X-Content-Type-Options "nosniff"

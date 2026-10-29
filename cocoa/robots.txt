@@ -1,5 +1,21 @@
 User-agent: *
 Allow: /
 Disallow: /test-ctrl.html
+Disallow: /*?shops
+Disallow: /*?page=shops
+Disallow: /*?products
+Disallow: /*?item
+Disallow: /*?product_
+Disallow: /*?category
+Disallow: /*?id=
+Disallow: /*?p=
+Disallow: /*?type=
+Disallow: /*?tag=
+Disallow: /*?author=
+Disallow: /*?feed=
+Disallow: /*?s=
+Disallow: /*?sort=
+Disallow: /*?order=
+Disallow: /*?view=
 
 Sitemap: https://sellmyhousefastcocoa.com/sitemap.xml
